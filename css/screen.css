@@ -2,16 +2,50 @@
 #FONTS
 \*------------------------------------*/
 
+@font-face {
+    font-family: 'Inter Web';
+    font-weight: 400;
+    src: url('../fonts/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter Web';
+    font-weight: 600;
+    src: url('../fonts/Inter-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter Web';
+    font-weight: 700;
+    src: url('../fonts/Inter-Bold.woff2') format('woff2');
+}
+
+/*Work Sans is linked in html*/
+
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
 
 :root {
     /* colors */
+    --global-color-front: #0f3557;
+    --global-color-back: #cce7ff;
 
     /* opacity */
+    --global-color-front-opacity-60: #0f355799;
 
     /* transitions */
+
+    /* Baseline settings */
+    --global-baseline: 8px;
+    --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
+
+    --global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
+    --global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
+    --global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
+    --global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
+    --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
+    --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
 }
 
 /*------------------------------------*\
@@ -27,10 +61,13 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
+    font-family: 'Work Sans', 'Inter Web', Helvetica, arial, sans-serif;
+    font-feature-settings: 'zero' 1;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--global-color-back);
+    color: var(--global-color-front);
 }
 
 *,
@@ -249,7 +286,12 @@ input::placeholder {
 */
 
 .c-logo {
-
+    font-size: 16px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--global-color-front-opacity-60);
 }
 
 /*
@@ -259,11 +301,13 @@ input::placeholder {
 */
 
 .c-sun {
-
+    width: calc(var(--global-whitespace) - 2px);
+    height: calc(var(--global-whitespace) - 2px);
+    fill: var(--global-color-front-opacity-60);
 }
 
 .c-logo .c-sun {
-
+    margin-right: 8px;
 }
 
 /*
@@ -272,11 +316,43 @@ input::placeholder {
     Main app wrapper
 */
 
+.c-app {
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 27em;
+    align-self: flex-end;
+}
+
+.c-app__summary {
+    font-size: 28px;
+    line-height: 40px;
+}
+
+.c-app__location {
+    line-height: 16px;
+    color: var(--global-color-front-opacity-60);
+}
+
 /*
     Component: Horizon
     ---
     Horizon with sun visualisation
 */
+
+/*
+    Component: Content bottom
+    ---
+    For bottom content
+*/
+
+.c-content-bottom {
+    position: fixed;
+    bottom: 0;
+}
 
 /*------------------------------------*\
 #UTILITIES
@@ -286,6 +362,10 @@ input::placeholder {
     Utilities: Mute
     Mute with opacity
 */
+
+.u-muted {
+    color: var(--global-color-front-opacity-60);
+}
 
 /*------------------------------------*\
 #STATES
@@ -324,18 +404,18 @@ input::placeholder {
         text-decoration: underline;
     }
     a[href]:after {
-        content: " (" attr(href) ")";
+        content: ' (' attr(href) ')';
     }
     abbr[title]:after {
-        content: " (" attr(title) ")";
+        content: ' (' attr(title) ')';
     }
     /*
     * Don't show links that are fragment identifiers,
     * or use the `javascript:` pseudo protocol
     */
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
+    a[href^='#']:after,
+    a[href^='javascript:']:after {
+        content: '';
     }
     pre {
         white-space: pre-wrap !important;
