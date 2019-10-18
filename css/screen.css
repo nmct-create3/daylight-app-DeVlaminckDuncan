@@ -33,6 +33,7 @@
 
     /* opacity */
     --global-color-front-opacity-60: #0f355799;
+    --global-opacity-60: 0.6;
 
     /* transitions */
 
@@ -291,7 +292,7 @@ input::placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--global-color-front-opacity-60);
+    opacity: var(--global-opacity-60);
 }
 
 /*
@@ -303,7 +304,8 @@ input::placeholder {
 .c-sun {
     width: calc(var(--global-whitespace) - 2px);
     height: calc(var(--global-whitespace) - 2px);
-    fill: var(--global-color-front-opacity-60);
+    fill: var(--global-color-front);
+    opacity: var(--global-opacity-60);
 }
 
 .c-logo .c-sun {
@@ -317,6 +319,7 @@ input::placeholder {
 */
 
 .c-app {
+    /*
     min-height: 100vh;
     align-items: center;
     justify-content: center;
@@ -325,6 +328,33 @@ input::placeholder {
     width: 100%;
     max-width: 27em;
     align-self: flex-end;
+    */
+
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+
+    /*
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+    */
+
+    /*
+    //oplossing van leerkracht
+    //werkt niet bij mij
+    margin: 0 auto;
+    max-width: 20em;
+    min-height: 100vh;
+    padding: 32px 32px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    */
 }
 
 .c-app__summary {
@@ -334,7 +364,7 @@ input::placeholder {
 
 .c-app__location {
     line-height: 16px;
-    color: var(--global-color-front-opacity-60);
+    opacity: var(--global-opacity-60);
 }
 
 /*
@@ -342,6 +372,55 @@ input::placeholder {
     ---
     Horizon with sun visualisation
 */
+
+.c-horizon {
+}
+
+.c-horizon__sky-wrapper {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    padding-top: 22px;
+    padding-right: 40px;
+}
+
+.c-horizon__sky {
+    position: relative;
+    height: 100%;
+}
+
+.c-horizon__sun {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    transform: translateY(22px);
+}
+
+.c-horizon__sun::before {
+    content: attr(data-time);
+    display: block;
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 8px;
+}
+
+.c-horizon__line {
+    border-top: 1px solid var(--global-color-front);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.c-horizon__time {
+    font-size: 12px;
+    line-height: 14px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 34px;
+}
 
 /*
     Component: Content bottom
@@ -364,7 +443,7 @@ input::placeholder {
 */
 
 .u-muted {
-    color: var(--global-color-front-opacity-60);
+    opacity: var(--global-opacity-60);
 }
 
 /*------------------------------------*\
