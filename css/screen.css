@@ -28,8 +28,11 @@
 
 :root {
     /* colors */
-    --global-color-front: #0f3557;
-    --global-color-back: #cce7ff;
+    --global-color-dark: #0f3557;
+    --global-color-light: #cce7ff;
+
+    --global-color-front: var(--global-color-dark);
+    --global-color-back: var(--global-color-light);
 
     /* opacity */
     --global-color-front-opacity-60: #0f355799;
@@ -47,6 +50,13 @@
     --global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
     --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
     --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
+}
+
+/* Night version: just switch the light and dark vars */
+
+.is-night {
+    --global-color-front: var(--global-color-light);
+    --global-color-back: var(--global-color-dark);
 }
 
 /*------------------------------------*\
@@ -333,6 +343,7 @@ input::placeholder {
     margin-left: auto;
     margin-right: auto;
     margin: 0;
+    margin-top: 32px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -431,6 +442,7 @@ input::placeholder {
 .c-content-bottom {
     position: fixed;
     bottom: 0;
+    margin-bottom: 8px;
 }
 
 /*------------------------------------*\
@@ -453,8 +465,6 @@ input::placeholder {
 /*
     Change the theme using CSS vars.
 */
-
-/* Night version: just switch the light and dark vars */
 
 /*------------------------------------*\
 #MEDIA
